@@ -106,21 +106,8 @@
                       Hi, Yoedi
                     </a>
                     <div class="dropdown-menu">
-                      <a href="/dashboard.html" class="dropdown-item"
-                        >Dashboard</a
-                      >
-                      <a href="/dashboard-account.html" class="dropdown-item"
-                        >Setting</a
-                      >
-                      <div class="dropdown-divider"></div>
                       <a href="" class="dropdown-item">Logout</a>
                     </div>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link d-inline-block mt-2">
-                      <img src="/images/icon-cart-filled.svg" alt="" />
-                      <div class="card-badge">3</div>
-                    </a>
                   </li>
                 </ul>
                 <ul class="navbar-nav d-block d-lg-none">
