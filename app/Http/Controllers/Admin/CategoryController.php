@@ -35,7 +35,7 @@ class CategoryController extends Controller
                                     Aksi
                             </button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-time" href="'. route('category.edit', $item->id) .'">
+                                <a class="dropdown-item" href="'. route('category.edit', $item->id) .'">
                                     Sunting
                                 </a>
                                 <form action="'. route('category.destroy', $item->id) .'" method="POST">
