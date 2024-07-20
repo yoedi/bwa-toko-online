@@ -21,7 +21,7 @@
         </li>
 
         <li class="nav-item">
-            <a href="{{ route('categories') }}" class="nav-link">Categories</a>
+            <a href="{{ route('category') }}" class="nav-link">Categories</a>
         </li>
 
         <li class="nav-item">
