@@ -148,11 +148,11 @@
         el: "#register",
         mounted() {
           AOS.init();
-        //   this.$toasted.error("Maaf, email sudah terdaftar.", {
-        //     position: "top-center",
-        //     className: "rounded",
-        //     duration: 1000,
-        //   });
+          // this.$toasted.error("Maaf, email sudah terdaftar.", {
+          //   position: "top-center",
+          //   className: "rounded",
+          //   duration: 1000,
+          });
         },
         data: {
           name: "Yoedi Arianto",
