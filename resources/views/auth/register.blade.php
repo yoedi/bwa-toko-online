@@ -32,7 +32,9 @@
                   <input type="email"
                     id="email"
                     v-model="email"
+                    @change="checkForEmailAvailability()"
                     class="form-control @error('email') is-invalid @enderror"
+                    :class="{'is-invalid' : this.email_unavailable}"
                     name="email" value="{{old('email')}}"
                     required
                     autocomplete="email">
@@ -125,6 +127,7 @@
                 <button
                   type="submit"
                   class="btn btn-success btn-block mt-4"
+                  :disabled="this.email_unavailable"
                 >
                   Sign Up Now
                 </button>
@@ -141,6 +144,7 @@
 @push('addon-script')
     <script src="/vendor/vue/vue.js"></script>
     <script src="https://unpkg.com/vue-toasted"></script>
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
     <script>
       Vue.use(Toasted);
 
@@ -154,12 +158,47 @@
         //     duration: 1000,
         //   });
         },
-        data: {
-          name: "Yoedi Arianto",
-          email: "emailtest@gmail.com",
-          password: "",
-          is_store_open: true,
-          store_name: "",
+        methods: {
+          checkForEmailAvailability: function() {
+            var self : this;
+
+            axios.get('{{route('api-register-check')}}', 
+              params: {
+                email = this.email
+              })
+              .then(function (response) {
+                // handle success
+                if(response.data == 'Available') {
+                  self.$toasted.error(
+                    "Email tersedia.", {
+                      position: "top-center",
+                      className: "rounded",
+                      duration: 1000,
+                    }
+                  )
+                  self.email_unavailable = false;
+                } else {
+                  self.$toasted.error(
+                    "Email sudah terdaftar.", {
+                      position: "top-center",
+                      className: "rounded",
+                      duration: 1000,
+                    }
+                  )
+                  self.email_unavailable = true;
+                }
+              })
+          }
+        },
+        data() {
+          return {
+            name: "Yoedi Arianto",
+            email: "emailtest@gmail.com",
+            password: "",
+            is_store_open: true,
+            store_name: "",
+            email_unavailable: false
+          }
         },
       });
     </script>
