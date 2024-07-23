@@ -40,19 +40,25 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'store_name' => ['nullable', 'string', 'max:255'],
+            'category_id' => ['nullable', 'integer', 'exists:categories,id'],
+            'is_store_open' => ['required'],
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'store_name' => $request->store_name,
+            'category_id' => $request->category_id,
+            'store_status' => $request->is_store_open,
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        return redirect(route('home', absolute: false));
     }
 
     public function success(): View

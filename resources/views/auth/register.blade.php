@@ -54,13 +54,13 @@
                 </div>
                 <div class="form-group">
                   <label>Konfirmasi Password</label>
-                  <input type="password-confirm"
-                    id="password-confirm"
-                    name="password-confirm"
-                    class="form-control @error('password-confirm') is-invalid @enderror"
+                  <input type="password"
+                    id="password_confirmation"
+                    name="password_confirmation"
+                    class="form-control @error('password_confirmation') is-invalid @enderror"
                     required
                     autocomplete="new-password" />
-                  @error('password-confirm')
+                  @error('password_confirmation')
                     <span class="invalid-feedback" role="alert"><strong>{{$message}}</strong></span>
                   @enderror
                 </div>
@@ -122,13 +122,13 @@
                   </select>
                 </div>
 
-                <a
-                  href="/dashboard.html"
+                <button
+                  type="submit"
                   class="btn btn-success btn-block mt-4"
                 >
                   Sign Up Now
-                </a>
-                <a href="/login.html" class="btn btn-signup btn-block mt-4">
+                </button>
+                <a href="{{ route('login') }}" class="btn btn-signup btn-block mt-2">
                   Back to Sign In
                 </a>
               </form>
