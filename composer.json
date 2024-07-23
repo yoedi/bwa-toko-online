@@ -11,6 +11,7 @@
         "php": "^8.2",
         "doctrine/dbal": "^4.0",
         "laravel/framework": "^11.9",
+        "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "sentry/sentry-laravel": "^4.6",
         "yajra/laravel-datatables-oracle": "^11.0"
