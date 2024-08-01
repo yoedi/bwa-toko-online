@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardProductController;
 use App\Http\Controllers\DashboardSettingController;
@@ -25,7 +26,11 @@ Route::get('/details/{id}', [DetailController::class, 'index'])->name('detail');
 Route::post('/details/{id}', [DetailController::class, 'add'])->name('detail-add');
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::delete('/cart/{id}', [CartController::class, 'delete'])->name('cart-delete');
+
+Route::post('/checkout', [CheckoutController::class, 'process'])->name('checkout');
+Route::get('/checkout/callback', [CheckoutController::class, 'callback'])->name('midtrans-callback');
 Route::get('/success', [CartController::class, 'success'])->name('success');
+
 Route::get('/register/success', [RegisteredUserController::class, 'success'])->name('register-success');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

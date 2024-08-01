@@ -160,11 +160,12 @@
         },
         methods: {
           checkForEmailAvailability: function() {
-            var self : this;
+            var self = this;
 
-            axios.get('{{route('api-register-check')}}', 
-              params: {
-                email = this.email
+            axios.get('{{route('api-register-check')}}', {
+                params: {
+                  email: this.email
+                }
               })
               .then(function (response) {
                 // handle success

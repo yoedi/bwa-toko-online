@@ -18,6 +18,7 @@ class Transaction extends Model
         'user_id',
         'inscurance_price',
         'shipping_price',
+        'transaction_status',
         'total_price',
         'code'
     ];
