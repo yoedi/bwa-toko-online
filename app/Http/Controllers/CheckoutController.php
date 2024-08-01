@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Midtrans\Config;
 use Midtrans\Snap;
 
+use function Pest\Laravel\delete;
+
 class CheckoutController extends Controller
 {
     public function process(Request $request)
@@ -46,6 +48,9 @@ class CheckoutController extends Controller
                 'code' => $trx,
             ]);
         }
+
+        //Delete cart data
+        Cart::where('user_id', Auth::user()->id)->delete();
 
         //Konfigurasi midtrans
         Config::$serverKey = config('services.midtrans.serverKey');
