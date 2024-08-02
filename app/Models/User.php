@@ -26,7 +26,7 @@ class User extends Authenticatable
         'store_status',
         'address_one',
         'address_two',
-        'provincy_id',
+        'province_id',
         'regency_id',
         'zip_code',
         'country',

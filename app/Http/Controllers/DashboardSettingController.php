@@ -34,7 +34,7 @@ class DashboardSettingController extends Controller
     {
         $data = $request->all();
         $item = Auth::user();
-
+        // dd($data);
         $item->update($data);
 
         return redirect()->route($redirect);

@@ -12,4 +12,4 @@ Route::get('/user', function (Request $request) {
 
 Route::get('register/check', [RegisteredUserController::class, 'check'])->name('api-register-check');
 Route::get('provinces', [LocationController::class, 'provinces'])->name('api-provinces');
-Route::get('regencies/{provincy_id}', [LocationController::class, 'regencies'])->name('api-regencies');
+Route::get('regencies/{province_id}', [LocationController::class, 'regencies'])->name('api-regencies');
