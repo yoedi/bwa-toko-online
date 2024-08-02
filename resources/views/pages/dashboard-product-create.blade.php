@@ -16,36 +16,47 @@
       <div class="dashboard-content">
         <div class="row">
           <div class="col-12">
-            <form action="">
+            @if ($errors->any())
+              <div class="alert alert-danger">
+                  <ul>
+                      @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+            @endif
+            <form action="{{ route('dashboard-product-store') }}" method="POST" enctype="multipart/form-data">
+              @csrf
+              <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
               <div class="card">
                 <div class="card-body">
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
                         <label>Product Name</label>
-                        <input type="text" class="form-control" />
+                        <input type="text" class="form-control" name="name"/>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label>Price</label>
-                        <input type="number" class="form-control" />
+                        <input type="number" class="form-control" name="price" />
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label>Kategori</label>
-                        <select name="category" class="form-control">
-                          <option value="" disabled>
-                            Pilih Kategori
-                          </option>
+                        <select name="category_id" class="form-control">
+                          @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                          @endforeach
                         </select>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label>Thumbnails</label>
-                        <input type="file" class="form-control" />
+                        <input name="photo" type="file" class="form-control" />
                         <p class="text-muted">
                           Kamu dapat memilih lebih dari satu file
                         </p>
@@ -55,19 +66,19 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Description</label>
-                      <div id="editor"></div>
+                      <textarea name="description" id="editor"></textarea>
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col text-right">
-                      <button
-                        type="submit"
-                        class="btn btn-success px-5"
-                      >
-                        Save Now
-                      </button>
-                    </div>
+                  <div class="col text-right">
+                    <button
+                      type="submit"
+                      class="btn btn-success px-5"
+                    >
+                      Save Now
+                    </button>
                   </div>
+              </div>
                 </div>
               </div>
             </form>
@@ -79,14 +90,8 @@
 @endsection
 
 @push('addon-script')
-  <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+  <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
   <script>
-    ClassicEditor.create(document.querySelector("#editor"))
-      .then((editor) => {
-        console.log(editor);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    CKEDITOR.replace('editor');
   </script>
 @endpush

@@ -39,7 +39,7 @@
               My Products
             </a>
             <a
-              href="{{route('dashboard-transaction')}}"
+              href="{{route('dashboard-transactions')}}"
               class="list-group-item list-group-item-action {{ (request()->is('dashboard/transactions*')) ? 'active' : '' }}"
             >
               Transactions
