@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductGalleryController;
+use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\CartController;
@@ -67,10 +68,12 @@ Route::prefix('admin')
         Route::get('/user/list', [UserController::class, 'list'])->name('list-user');
         Route::get('/product/list', [ProductController::class, 'list'])->name('list-product');
         Route::get('/product-gallery/list', [ProductGalleryController::class, 'list'])->name('list-product-gallery');
+        Route::get('/transaction/list', [TransactionController::class, 'list'])->name('list-transaction');
         Route::resource('category', AdminCategoryController::class);
         Route::resource('user', UserController::class);
         Route::resource('product', ProductController::class);
         Route::resource('product-gallery', ProductGalleryController::class);
+        Route::resource('transaction', TransactionController::class);
     });
 
 /*
